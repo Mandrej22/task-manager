@@ -1,0 +1,25 @@
+.task {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fdfdfe;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+}
+
+.task-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.task-description {
+  font-size: 16px;
+}
