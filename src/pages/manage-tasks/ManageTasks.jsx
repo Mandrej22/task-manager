@@ -3,7 +3,7 @@ import styles from './ManageTasks.module.scss';
 
 function ManageTasks() {
   // Manage state for tasks, new tasks, edit mode, and task filter
-  const [tasks, setTasks] = useState(JSON.parse(localStorage.tasks)); // Ne znam je li ovo najbolji nacin da storujem taskove, vjerovatno postoje neke biblioteke za ovo?
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.tasks || "[]")); // Ne znam je li ovo najbolji nacin da storujem taskove, vjerovatno postoje neke biblioteke za ovo?
   const [newTask, setNewTask] = useState({ title: '', description: '', status: 'to do' });
   const [editMode, setEditMode] = useState(false);
   const [filter, setFilter] = useState('all');

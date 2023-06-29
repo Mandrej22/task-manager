@@ -4,7 +4,7 @@ import styles from './Home.module.scss';
 import { useState, useEffect } from 'react';
 
 function Home() {
-  const tasks = JSON.parse(localStorage.tasks);
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks') || "[]"));
   const [search, setSearch] = useState('');
 
   const handleSearchChange = (event) => {
@@ -15,6 +15,20 @@ function Home() {
     return tasks.filter(task => task.status === status && task.title.toLowerCase().includes(search.toLowerCase()));
   };
 
+  useEffect(() => {
+    // Function to handle localStorage changes
+    const handleStorageChange = () => {
+      setTasks(JSON.parse(localStorage.getItem('tasks') || "[]"));
+    };
+
+    // Attach the event listener
+    window.addEventListener('storage', handleStorageChange);
+
+    // Detach the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
 
   return (
     <div className={styles['home']}>
